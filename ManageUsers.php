@@ -15,7 +15,7 @@ if (!isset($_SESSION['Admin-name'])) {
     <script type="text/javascript" src="js/bootbox.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script src="js/manage_users.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/manageusers.css">
+	<link rel="stylesheet" type="text/css" href="manageusers.css">
 </head>
 <body>
 <?php include'header.php';?>

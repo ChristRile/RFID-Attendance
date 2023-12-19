@@ -1,8 +1,6 @@
 h1{
   font-size: 28px !important;
-  color: #000;
   font-weight: 300;
-  font-family: New Century Schoolbook, TeX Gyre Schola, serif !important;
   text-align: center;
   margin: 15px;
   padding-top: 20px;
@@ -15,13 +13,15 @@ h1{
  .form {
   position: relative;
   z-index: 1;
-  background: rgba(10, 10, 10, 0.3);
+  background-color: #164B94;
   max-width: 360px;
   margin: 0 auto;
   padding: 40px;
   text-align: center;
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0 25px;
+  border-radius: 5px;
+}
+.line{
+  text-decoration: underline;
 }
  .form input {
   font-family: "Roboto", sans-serif;
@@ -30,28 +30,28 @@ h1{
   width: 100%;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
-  font-size: 15px;
-  border-radius: 0 25px;
+  font-size: 12px;
+  border-radius: 10px;
 }
  .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #008080;
+  background: #fff53c;
   width: 100%;
   border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 15px;
+  padding: 10px;
+  color: #000000;
+  font-size: 12px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-  border-radius: 0 25px;
+  border-radius: 10px;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #067979;
+  background: #06C4FC;
 }
 .form .message {
   margin: 15px 0 0;
@@ -60,9 +60,8 @@ h1{
   font-family: sans-serif;
 }
 .form .message a {
-  color: #000;
+  color: whitesmoke;
   font-size: 14px;
-  text-decoration: none;
   font-family: sans-serif;
 }
 .form .alert {

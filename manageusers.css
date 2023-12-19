@@ -51,7 +51,6 @@ td{
   border-radius: 50%;
   margin: 0 auto;
   position: relative;
-  border: 1px solid black;
 }
 .round-image{
   position: relative;
@@ -59,7 +58,7 @@ td{
   width: 150px;
   margin: 0 auto;
   height: 150px;
-  object-fit: cover;
+  object-fit: cover;  
   border: 1px solid black;
 }
 .upload-label {

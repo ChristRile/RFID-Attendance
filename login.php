@@ -11,7 +11,7 @@ if (isset($_SESSION['Admin-name'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="login.css">
     <script src="js/jquery-2.2.3.min.js"></script>
     <script>
       $(window).on("load resize ", function() {
@@ -28,14 +28,11 @@ if (isset($_SESSION['Admin-name'])) {
       });
     </script>
 </head>
+<?php include 'header.php'; ?> 
 <body>
-<?php include'header.php'; ?> 
 <main>
-  <h1 class="slideInDown animated">Please, Login with the Admin E-mail and Password</h1>
-  <h1 class="slideInDown animated" id="reset">Please, Enter your Email to send the reset password link</h1>
-<!-- Log In -->
-<section>
-  <div class="slideInDown animated">
+<section class="container">
+  <div class=" animated">
     <div class="login-page">
       <div class="form">
         <?php  
@@ -84,16 +81,11 @@ if (isset($_SESSION['Admin-name'])) {
           }
         ?>
         <div class="alert1"></div>
-        <form class="reset-form" action="reset_pass.php" method="post" enctype="multipart/form-data">
-          <input type="email" name="email" placeholder="E-mail..." required/>
-          <button type="submit" name="reset_pass">Reset</button>
-          <p class="message"><a href="#">LogIn</a></p>
-        </form>
         <form class="login-form" action="ac_login.php" method="post" enctype="multipart/form-data">
-          <input type="email" name="email" id="email" placeholder="E-mail..." required/>
+        <h1 class="p-3 pt-0 m-0" id="white">Welcome, Teacher</h1>
+          <input type="email" name="email" id="email" placeholder="E-mail address" required/>
           <input type="password" name="pwd" id="pwd" placeholder="Password" required/>
           <button type="submit" name="login" id="login">login</button>
-          <p class="message">Forgot your Password? <a href="#">Reset your password</a></p>
         </form>
       </div>
     </div>

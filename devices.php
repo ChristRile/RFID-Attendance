@@ -9,10 +9,8 @@ if (!isset($_SESSION['Admin-name'])) {
 <head>
 	<title>Manage Devices</title>
   	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--   	<link rel="icon" type="image/png" href="images/favicon.png"> -->
-	<link rel="stylesheet" type="text/css" href="css/devices.css"/>
-
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="devices.css"/>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"
 	        integrity="sha1256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
