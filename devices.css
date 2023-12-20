@@ -30,9 +30,12 @@ section {
   border-color: #388994 !important;
 }
 .panel-heading {
+  color: #fff;
+  padding: 30px;
   background-color: #388994 !important;
 }
 .panel-body {
+  padding: 30px;
   background-color: #46abb9 !important;
 }
 

@@ -59,26 +59,42 @@ if (!isset($_SESSION['Admin-name'])) {
   <!--User table-->
     <h1 class="slideInDown animated">Here are the Students daily logs</h1>
     <div class="form-style-5">
-      <button type="button" data-toggle="modal" data-target="#Filter-export">Log Filter/ Export to Excel</button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filter">
+        Log Filters
+      </button>    
     </div>
-    <!-- Log filter -->
-    <div class="modal fade bd-example-modal-lg" id="Filter-export" tabindex="-1" role="dialog" aria-labelledby="Filter/Export" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg animate" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle">Filter Your User Log:</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form method="POST" action="Export_Excel.php" enctype="multipart/form-data">
+    <!--STUDENT CARD-->
+    <div class="card mb-3 w-100">
+  <div class="row g-0">
+    <div class="col-md-4 d-flex p-2 justify-content-center">
+      <img src="examplle.jpg" class="big-img-round" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Student Name</h5>
+        <p class="card-text">Department</p>
+        <p class="card-text"><small class="text-muted">Date ??</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filter Your User Log</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" action="Export_Excel.php" enctype="multipart/form-data">
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
-                      <div class="panel-heading">Filter By Date:</div>
-                      <div class="panel-body">
+                      <div class="panel-heading py-4">Filter By Date:</div>
+                      <div class="panel-body pt-2">
                       <label for="Start-Date"><b>Select from this Date:</b></label>
                       <input type="date" name="date_sel_start" id="date_sel_start">
                       <label for="End -Date"><b>To End of this Date:</b></label>
@@ -89,15 +105,15 @@ if (!isset($_SESSION['Admin-name'])) {
                   <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
                       <div class="panel-heading">
-                          Filter By:
-                        <div class="time">
-                          <input type="radio" id="radio-one" name="time_sel" class="time_sel" value="Time_in" checked/>
-                          <label for="radio-one">Time-in</label>
-                          <input type="radio" id="radio-two" name="time_sel" class="time_sel" value="Time_out" />
-                          <label for="radio-two">Time-out</label>
-                        </div>
+                          <p class="m-0 py-4">Filter By:</p>
+                          <div class="time">
+                            <input type="radio" id="radio-one" name="time_sel" class="time_sel" value="Time_in" checked/>
+                            <label for="radio-one">Time-in</label>
+                            <input type="radio" id="radio-two" name="time_sel" class="time_sel" value="Time_out" />
+                            <label for="radio-two">Time-out</label>
+                          </div>
                       </div>
-                      <div class="panel-body">
+                      <div class="panel-body pt-2">
                         <label for="Start-Time"><b>Select from this Time:</b></label>
                         <input type="time" name="time_sel_start" id="time_sel_start">
                         <label for="End -Time"><b>To End of this Time:</b></label>
@@ -161,10 +177,23 @@ if (!isset($_SESSION['Admin-name'])) {
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" name="user_log" id="user_log" class="btn btn-success">Filter</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" name="user_log" id="user_log" class="btn btn-success" data-bs-dismiss="modal" >Filter</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bs-dismiss="modal">Cancel</button>
             </div>
           </form>
+    </div>
+  </div>
+</div>
+    <!-- Log filter -->
+    <div class="modal fade bd-example-modal-lg" id="Filter-export" tabindex="-1" role="dialog" aria-labelledby="Filter/Export" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg animate" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle">Filter Your User Log:</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
