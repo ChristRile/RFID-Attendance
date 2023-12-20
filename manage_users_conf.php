@@ -2,41 +2,37 @@
 //Connect to database
 require'connectDB.php';
 
-//Add user
+// Add user
 if (isset($_POST['Add'])) {
-     
     $user_id = $_POST['user_id'];
     $Uname = $_POST['name'];
     $Number = $_POST['number'];
     $Email = $_POST['email'];
     $dev_uid = $_POST['device_uid'];
     $Gender = $_POST['gender'];
-    $profilepic = $_FILES['profilepic'];
+    $profilepic = $_FILES['profilepic']['tmp_name'];
+    $profilepicContent = file_get_contents($profilepic);
 
-    //check if there any selected user
+    // Check if there's any selected user
     $sql = "SELECT add_card FROM users WHERE id=?";
     $result = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($result, $sql)) {
-      echo "SQL_Error";
-      exit();
-    }
-    else{
+        echo "SQL_Error";
+        exit();
+    } else {
         mysqli_stmt_bind_param($result, "i", $user_id);
         mysqli_stmt_execute($result);
         $resultl = mysqli_stmt_get_result($result);
         if ($row = mysqli_fetch_assoc($resultl)) {
-
             if ($row['add_card'] == 0) {
-
                 if (!empty($Uname) && !empty($Number) && !empty($Email)) {
-                    //check if there any user had already the Serial Number
+                    // Check if there's any user with the same Serial Number
                     $sql = "SELECT serialnumber FROM users WHERE serialnumber=? AND id NOT like ?";
                     $result = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($result, $sql)) {
                         echo "SQL_Error";
                         exit();
-                    }
-                    else{
+                    } else {
                         mysqli_stmt_bind_param($result, "di", $Number, $user_id);
                         mysqli_stmt_execute($result);
                         $resultl = mysqli_stmt_get_result($result);
@@ -46,49 +42,43 @@ if (isset($_POST['Add'])) {
                             if (!mysqli_stmt_prepare($result, $sql)) {
                                 echo "SQL_Error";
                                 exit();
-                            }
-                            else{
+                            } else {
                                 mysqli_stmt_bind_param($result, "s", $dev_uid);
                                 mysqli_stmt_execute($result);
                                 $resultl = mysqli_stmt_get_result($result);
                                 if ($row = mysqli_fetch_assoc($resultl)) {
                                     $dev_name = $row['device_dep'];
-                                }
-                                else{
+                                } else {
                                     $dev_name = "All";
                                 }
                             }
-                            $sql="UPDATE users SET username=?, serialnumber=?, gender=?, email=?, user_date=CURDATE(), device_uid=?, device_dep=?, profilepic=?, add_card=1 WHERE id=?";
+
+                            $sql = "UPDATE users SET username=?, serialnumber=?, gender=?, email=?, user_date=CURDATE(), device_uid=?, device_dep=?, profilepic=?, add_card=1 WHERE id=?";
                             $result = mysqli_stmt_init($conn);
                             if (!mysqli_stmt_prepare($result, $sql)) {
-                                echo "SQL_Error_select_Fingerprint";
+                                echo "SQL_Error_select_Card";
                                 exit();
-                            }
-                            else{
-                                mysqli_stmt_bind_param($result, "sdssssi", $Uname, $Number, $Gender, $Email, $dev_uid, $dev_name, $profilepic, $user_id );
+                            } else {
+                                // 'b' is used to indicate a BLOB type
+                                mysqli_stmt_bind_param($result, "sdsssssi", $Uname, $Number, $Gender, $Email, $dev_uid, $dev_name, $profilepicContent, $user_id);
                                 mysqli_stmt_execute($result);
-
                                 echo 1;
                                 exit();
                             }
-                        }
-                        else {
+                        } else {
                             echo "The serial number is already taken!";
                             exit();
                         }
                     }
-                }
-                else{
+                } else {
                     echo "Empty Fields";
                     exit();
                 }
-            }
-            else{
+            } else {
                 echo "This User is already exist";
                 exit();
-            }    
-        }
-        else {
+            }
+        } else {
             echo "There's no selected Card!";
             exit();
         }

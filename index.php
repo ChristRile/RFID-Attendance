@@ -37,6 +37,7 @@ if (!isset($_SESSION['Admin-name'])) {
           <th>Card UID</th>
           <th>Date</th>
           <th>Device</th>
+          <th>Image URL</th>
         </tr>
       </thead>
       <tbody class="table-secondary">
@@ -63,6 +64,10 @@ if (!isset($_SESSION['Admin-name'])) {
                       <td><?php echo $row['card_uid'];?></td>
                       <td><?php echo $row['user_date'];?></td>
                       <td><?php echo $row['device_dep'];?></td>
+                      <td>
+                          <img src="display_image.php?user_id=<?php echo $row['id']; ?>" alt="Profile Picture">
+                      </td>
+
                   </tr>
         <?php
                 }   

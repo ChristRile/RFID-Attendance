@@ -2,16 +2,13 @@ $(document).ready(function(){
   // Add user
   $(document).on('click', '.user_add', function(){
     //user Info
-    //var user_id = $('#user_id').val();
-    //var name = $('#name').val();
-    //var number = $('#number').val();
-    //var email = $('#email').val();
+    var user_id = $('#user_id').val();
+    var name = $('#name').val();
+    var number = $('#number').val();
+    var email = $('#email').val();
     //Additional Info
-    //var dev_uid = $('#dev_uid').val();
-    //var gender = $(".gender:checked").val();
-    //var dev_uid = $('#dev_sel option:selected').val();
-    //var profilepic = $('#fileInput').val();
-
+    var dev_uid = $('#dev_sel option:selected').val();
+    var gender = $(".gender:checked").val();
 
     var formData = new FormData();
     formData.append('Add', 1);
@@ -24,41 +21,40 @@ $(document).ready(function(){
     formData.append('profilepic', $('#profilepic')[0].files[0]);
 
     $.ajax({
-      url: 'manage_users_conf.php',
-      type: 'POST',
-      data:  formData,
-      contentType: false,
-      processData: false,
-      success: function(response){
+        url: 'manage_users_conf.php',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response){
+            if (response == 1) {
+                // Clear form fields
+                $('#user_id').val('');
+                $('#name').val('');
+                $('#number').val('');
+                $('#email').val('');
+                $('#dev_sel').val('0');
+                $('.alert_user').fadeIn(500);
+                $('.alert_user').html('<p class="alert alert-success">A new User has been successfully added</p>');
+            }
+            else{
+                $('.alert_user').fadeIn(500);
+                $('.alert_user').html('<p class="alert alert-danger">'+ response + '</p>');
+            }
 
-        if (response == 1) {
-          $('#user_id').val('');
-          $('#name').val('');
-          $('#number').val('');
-          $('#email').val('');
+            setTimeout(function () {
+                $('.alert').fadeOut(500);
+            }, 5000);
 
-          $('#device_uid').val('');
-          $('#dev_sel').val('0');
-          $('.alert_user').fadeIn(500);
-          $('.alert_user').html('<p class="alert alert-success">A new User has been successfully added</p>');
+            $.ajax({
+                url: "manage_users_up.php"
+            }).done(function(data) {
+                $('#manage_users').html(data);
+            });
         }
-        else{
-          $('.alert_user').fadeIn(500);
-          $('.alert_user').html('<p class="alert alert-danger">'+ response + '</p>');
-        }
-
-        setTimeout(function () {
-            $('.alert').fadeOut(500);
-        }, 5000);
-        
-        $.ajax({
-          url: "manage_users_up.php"
-          }).done(function(data) {
-          $('#manage_users').html(data);
-        });
-      }
     });
   });
+
   // Update user
   $(document).on('click', '.user_upd', function(){
     //user Info
