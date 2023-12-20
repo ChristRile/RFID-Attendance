@@ -2,13 +2,9 @@
   text-decoration: none;
   box-sizing: border-box;
 }
-main{
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 100%;
-}
+
 body{
-  background: #FFF;
+    background: #FFF;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 15px;
@@ -95,10 +91,10 @@ header, main {
   display: none;
 }
 
-tbody tr:nth-child(even){background-color: #388994;}
-tbody tr:nth-child(odd){background-color: #3f9aa6;}
+tbody tr:nth-child(even){background-color: #164B94;}
+tbody tr:nth-child(odd){background-color: #164B94;}
 
-tbody tr:hover {opacity: 0.8;}
+tbody tr:hover {opacity: 0.9;}
 
 h3 {
   padding: 15px;

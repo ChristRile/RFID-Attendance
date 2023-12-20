@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+error_reporting(E_ALL);
 if (!isset($_SESSION['Admin-name'])) {
   header("location: login.php");
 }
@@ -22,19 +24,12 @@ if (!isset($_SESSION['Admin-name'])) {
 <main>
 	<h1 class="slideInDown animated">Add a new User or update his information or remove him</h1>
 	<div class="form-style-5 slideInDown animated" style="height: 900px">
-		<form enctype="multipart/form-data">
+		<form enctype="multipart/form-data" method="POST" id="userForm">
 			<div class="alert_user"></div>
 			<fieldset>
 				<legend class="p-2"><span class="number">1</span> User Info</legend>
 				<input type="hidden" name="user_id" id="user_id">
-				<div class="m-5">
-					<div class="avatar" id="avatarContainer">
-						<input type="file" name="profilepic" id="fileInput" accept="image/*" style="display: none;">
-						<img class="round-image" id="previewImage" src="">
-						<label for="fileInput" class="upload-label">Profile Picture</label>
-					</div>					
-				</div>
-
+				<input type="file" name="profilepic" id="profilepic" accept="image/*">
 				<input type="text" name="name" id="name" placeholder="User Name...">
 				<input type="text" name="number" id="number" placeholder="Serial Number...">
 				<input type="email" name="email" id="email" placeholder="User Email...">
@@ -105,7 +100,7 @@ if (!isset($_SESSION['Admin-name'])) {
 	</script>
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-    const fileInput = document.getElementById("fileInput");
+    const fileInput = document.getElementById("profilepic");
     const previewImage = document.getElementById("previewImage");
 
     fileInput.addEventListener("change", function () {

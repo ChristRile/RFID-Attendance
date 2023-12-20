@@ -2,27 +2,33 @@ $(document).ready(function(){
   // Add user
   $(document).on('click', '.user_add', function(){
     //user Info
-    var user_id = $('#user_id').val();
-    var name = $('#name').val();
-    var number = $('#number').val();
-    var email = $('#email').val();
+    //var user_id = $('#user_id').val();
+    //var name = $('#name').val();
+    //var number = $('#number').val();
+    //var email = $('#email').val();
     //Additional Info
-    var dev_uid = $('#dev_uid').val();
-    var gender = $(".gender:checked").val();
-    var dev_uid = $('#dev_sel option:selected').val();
-    
+    //var dev_uid = $('#dev_uid').val();
+    //var gender = $(".gender:checked").val();
+    //var dev_uid = $('#dev_sel option:selected').val();
+    //var profilepic = $('#fileInput').val();
+
+
+    var formData = new FormData();
+    formData.append('Add', 1);
+    formData.append('user_id', user_id);
+    formData.append('name', name);
+    formData.append('number', number);
+    formData.append('email', email);
+    formData.append('device_uid', dev_uid);
+    formData.append('gender', gender);
+    formData.append('profilepic', $('#profilepic')[0].files[0]);
+
     $.ajax({
       url: 'manage_users_conf.php',
       type: 'POST',
-      data: {
-        'Add': 1,
-        'user_id': user_id,
-        'name': name,
-        'number': number,
-        'email': email,
-        'dev_uid': dev_uid,
-        'gender': gender,
-      },
+      data:  formData,
+      contentType: false,
+      processData: false,
       success: function(response){
 
         if (response == 1) {
@@ -31,6 +37,7 @@ $(document).ready(function(){
           $('#number').val('');
           $('#email').val('');
 
+          $('#device_uid').val('');
           $('#dev_sel').val('0');
           $('.alert_user').fadeIn(500);
           $('.alert_user').html('<p class="alert alert-success">A new User has been successfully added</p>');
