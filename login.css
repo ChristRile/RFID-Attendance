@@ -1,3 +1,9 @@
+main{ 
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 100%;
+}
+
 h1{
   font-size: 28px !important;
   font-weight: 300;
@@ -70,6 +76,7 @@ h1{
 .form .alert1 {
   display: none;
   width: 100%;
+  margin-left: 200px;
   text-align: center;
 }
 #reset{
@@ -78,17 +85,7 @@ h1{
 .form .reset-form {
   display: none;
 }
-.container { 
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
+
 .container .info {
   margin: 50px auto;
   text-align: center;

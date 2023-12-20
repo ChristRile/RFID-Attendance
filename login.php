@@ -32,7 +32,6 @@ if (isset($_SESSION['Admin-name'])) {
 <body>
 <main>
 <section class="container">
-  <div class=" animated">
     <div class="login-page">
       <div class="form">
         <?php  
@@ -88,7 +87,6 @@ if (isset($_SESSION['Admin-name'])) {
           <button type="submit" name="login" id="login">login</button>
         </form>
       </div>
-    </div>
   </div>
 </section>
 </main>

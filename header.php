@@ -1,7 +1,7 @@
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel='stylesheet' type='text/css' href="css/bootstrap.css"/>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+	<script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="header.css"/>
 </head>
 <header>
@@ -54,27 +54,37 @@
 	    }
 	  }
 ?>
-<div class="topnav" id="myTopnav">
-	<a href="index.php">Users</a>
-    <a href="ManageUsers.php">Manage Users</a>
-    <a href="UsersLog.php">Users Log</a>
-    <a href="devices.php">Devices</a>
-    <?php  
-    	if (isset($_SESSION['Admin-name'])) {
-    		echo '<a href="#" data-toggle="modal" data-target="#admin-account">'.$_SESSION['Admin-name'].'</a>';
-    		echo '<a href="logout.php">Log Out</a>';
-    	}
-    	else{
-    		echo '<a href="login.php">Log In</a>';
-    	}
-    ?>
-    <a href="javascript:void(0);" class="icon" onclick="navFunction()">
-	  <i class="fa fa-bars"></i>
-	</a>
-</div>
 <div class="up_info1 alert-danger"></div>
 <div class="up_info2 alert-success"></div>
 </header>
+
+<button class="btn btn-primary mt-5 ms-4"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Menu
+</button>
+
+<div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+	<div class="container row sidebar">
+	  	<a href="index.php">Users</a>
+		<a href="ManageUsers.php">Manage Users</a>
+		<a href="UsersLog.php">Users Log</a>
+		<a href="devices.php">Devices</a>
+		<?php  
+			if (isset($_SESSION['Admin-name'])) {
+				echo '<a href="logout.php">Log Out</a>';
+			}
+			else{
+				echo '<a href="login.php">Log In</a>';
+			}
+		?>		
+	</div>
+  </div>
+</div>
+
 <script>
 	function navFunction() {
 	  var x = document.getElementById("myTopnav");
